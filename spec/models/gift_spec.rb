@@ -34,8 +34,10 @@ describe Gift do
 	end
 
 	it "should not allow a gift larger than Giver's total points" do
-		subject.sender.points = 0
+		subject.amount = 1000000
 		subject.save.should be_false
+		subject.amount = 1
+		subject.save.should be_true
 	end
 
 
