@@ -14,8 +14,8 @@ describe User do
 	end
 
 	it "should list all gifts received" do
-		subject.received_gifts[0].should be_an_instance_of(Gift)
-		subject.sent_gifts[0].should be_an_instance_of(Gift)
+		subject.received_gifts.first.should be_an_instance_of(Gift)
+		subject.sent_gifts.last.should be_an_instance_of(Gift)
 	end
 
 end

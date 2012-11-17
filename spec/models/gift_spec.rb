@@ -28,8 +28,10 @@ describe Gift do
 		expect { subject.save }.to change { subject.sender.points}.by(-100)
  	end
 
-	it "should not allow negative gifts" do
+	it "should not allow negative gifts or zero gifts" do
 		subject.amount = -100
+		subject.save.should be_false
+		subject.amount = 0 
 		subject.save.should be_false
 	end
 
@@ -38,6 +40,7 @@ describe Gift do
 		subject.save.should be_false
 		subject.amount = 1
 		subject.save.should be_true
+
 	end
 
 

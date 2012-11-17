@@ -1,6 +1,5 @@
 class Gift < ActiveRecord::Base
-  attr_accessible :amount, :receiver_id, :sender_id, :title
-  attr_reader :xfer_complete
+  attr_accessible :amount, :receiver_id, :sender_id, :title, :xfer_complete
   validates_numericality_of :amount, :greater_than => 0 
   before_save :self_gifting?
   before_save :can_afford?
@@ -22,7 +21,7 @@ class Gift < ActiveRecord::Base
     if self.xfer_complete then return end
     self.sender.update_points(-self.amount)
     self.receiver.update_points(+self.amount)  
-    not self.xfer_complete
+    self.xfer_complete = true
   end
 
   def can_afford?

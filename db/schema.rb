@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115201909) do
+ActiveRecord::Schema.define(:version => 20121117062356) do
 
   create_table "gifts", :force => true do |t|
     t.string   "title"
     t.integer  "amount"
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "xfer_complete", :default => false
   end
 
   create_table "users", :force => true do |t|
