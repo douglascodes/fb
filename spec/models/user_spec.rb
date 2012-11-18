@@ -2,20 +2,12 @@ require 'spec_helper'
 
 describe User do
 	
-	before do
-		subject.name = "Douglas"
-		subject.id = 1
-		subject.email = "douglasdrinks@gmail.com"
-		subject.points = 1000
-	end
+	let(:user) { User.first }
 
-	it "should respond to its attributes"	do
-	  subject.should respond_to(:email, :name, :points)
-	end
+	it { should respond_to(:email, :name, :points, :id)}
 
 	it "should list all gifts received" do
-		subject.received_gifts.first.should be_an_instance_of(Gift)
-		subject.sent_gifts.last.should be_an_instance_of(Gift)
+		user.received_gifts.first.should be_an_instance_of(Gift)
+	  user.sent_gifts.last.should be_an_instance_of(Gift)
 	end
-
 end

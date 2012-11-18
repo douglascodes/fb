@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :points
   validates_uniqueness_of :name && :email
   validates_numericality_of :points, :greater_than => 0 
-
-
   has_many :gifts
   belongs_to :gift, :foreign_key => :receiver_id
   belongs_to :gift, :foreign_key => :sender_id
